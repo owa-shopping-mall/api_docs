@@ -749,6 +749,16 @@ Content-Length: 109
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">상품 설명 - NotEmpty</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>orderItems.[].item.itemImgUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">상품 대표 사진 url - NotEmpty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>orderItems.[].item.registeredMemberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">등록 memberId - NotEmpty</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -806,7 +816,7 @@ Content-Length: 109
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /command/api/v1/orders HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 331
+Content-Length: 429
 Host: localhost:8080
 Cookie: SESSION=cookie_val
 
@@ -821,7 +831,9 @@ Cookie: SESSION=cookie_val
       "productId" : "productId",
       "name" : "name",
       "price" : 1000,
-      "description" : "좋은 상품 설명"
+      "description" : "좋은 상품 설명",
+      "itemImgUrl" : "https://itemImgUrl.com",
+      "registeredMemberId" : "registeredMemberId"
     },
     "quantity" : 2
   } ]
@@ -865,7 +877,7 @@ Content-Length: 97
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /command/api/v1/orders HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 324
+Content-Length: 422
 Host: localhost:8080
 Cookie: SESSION=cookie_val
 
@@ -880,7 +892,9 @@ Cookie: SESSION=cookie_val
       "productId" : "productId",
       "name" : "name",
       "price" : 1000,
-      "description" : "좋은 상품 설명"
+      "description" : "좋은 상품 설명",
+      "itemImgUrl" : "https://itemImgUrl.com",
+      "registeredMemberId" : "registeredMemberId"
     },
     "quantity" : 2
   } ]
@@ -991,6 +1005,16 @@ Content-Length: 116
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">상품 설명 - NotEmpty</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>orderItems.[].item.itemImgUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">상품 대표 사진 url - NotEmpty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>orderItems.[].item.registeredMemberId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">등록 memberId - NotEmpty</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1048,7 +1072,7 @@ Content-Length: 116
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /command/api/v1/orders HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 331
+Content-Length: 429
 Host: localhost:8080
 Cookie: SESSION=cookie_val
 
@@ -1063,7 +1087,9 @@ Cookie: SESSION=cookie_val
       "productId" : "productId",
       "name" : "name",
       "price" : 1000,
-      "description" : "좋은 상품 설명"
+      "description" : "좋은 상품 설명",
+      "itemImgUrl" : "https://itemImgUrl.com",
+      "registeredMemberId" : "registeredMemberId"
     },
     "quantity" : 2
   } ]
@@ -1107,7 +1133,7 @@ Content-Length: 97
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /command/api/v1/orders HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 324
+Content-Length: 422
 Host: localhost:8080
 Cookie: SESSION=cookie_val
 
@@ -1122,7 +1148,9 @@ Cookie: SESSION=cookie_val
       "productId" : "productId",
       "name" : "name",
       "price" : 1000,
-      "description" : "좋은 상품 설명"
+      "description" : "좋은 상품 설명",
+      "itemImgUrl" : "https://itemImgUrl.com",
+      "registeredMemberId" : "registeredMemberId"
     },
     "quantity" : 2
   } ]
@@ -1775,7 +1803,7 @@ Content-Length: 80
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTime=2023-08-11T22:21:29.974253 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTime=2023-09-01T22:13:28.371441 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -1789,7 +1817,7 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTime=2023-08-11T22:21:29.974253' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTime=2023-09-01T22:13:28.371441' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
@@ -1804,7 +1832,7 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 438
+Content-Length: 439
 
 {
   "detailCode" : "",
@@ -1819,8 +1847,8 @@ Content-Length: 438
       "imagePath" : "https://imag.com/path/img",
       "description" : "description",
       "memberId" : "memberId",
-      "createTime" : "2023-08-11T22:21:29.975299",
-      "updateTime" : "2023-08-11T22:21:29.97531"
+      "createTime" : "2023-09-01T22:13:28.372432",
+      "updateTime" : "2023-09-01T22:13:28.372441"
     } ]
   }
 }</code></pre>
@@ -1967,7 +1995,7 @@ Cookie: SESSION=cookie_val</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 370
+Content-Length: 371
 
 {
   "detailCode" : "",
@@ -1980,8 +2008,8 @@ Content-Length: 370
     "imagePath" : "https://imag.com/path/img",
     "description" : "description",
     "memberId" : "member_id",
-    "createTime" : "2023-08-11T22:21:29.846835",
-    "updateTime" : "2023-08-11T22:21:29.84685"
+    "createTime" : "2023-09-01T22:13:28.254441",
+    "updateTime" : "2023-09-01T22:13:28.254455"
   }
 }</code></pre>
 </div>
@@ -2221,7 +2249,7 @@ Content-Length: 101
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-08-11T22:21:29.91309 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-09-01T22:13:28.327773 HTTP/1.1
 Accept: application/json
 Host: localhost:8080
 Cookie: SESSION=cookie_val</code></pre>
@@ -2236,7 +2264,7 @@ Cookie: SESSION=cookie_val</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-08-11T22:21:29.91309' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-09-01T22:13:28.327773' -i -X GET \
     -H 'Accept: application/json' \
     --cookie 'SESSION=cookie_val'</code></pre>
 </div>
@@ -2252,7 +2280,7 @@ Cookie: SESSION=cookie_val</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 440
+Content-Length: 439
 
 {
   "detailCode" : "",
@@ -2267,8 +2295,8 @@ Content-Length: 440
       "imagePath" : "https://imag.com/path/img",
       "description" : "description",
       "memberId" : "member_id",
-      "createTime" : "2023-08-11T22:21:29.915521",
-      "updateTime" : "2023-08-11T22:21:29.91553"
+      "createTime" : "2023-09-01T22:13:28.3323",
+      "updateTime" : "2023-09-01T22:13:28.332315"
     } ]
   }
 }</code></pre>
@@ -2379,7 +2407,7 @@ Content-Length: 440
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-08-11T22:21:29.896587 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-09-01T22:13:28.309127 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -2393,7 +2421,7 @@ Host: localhost:8080</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-08-11T22:21:29.896587' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-09-01T22:13:28.309127' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
