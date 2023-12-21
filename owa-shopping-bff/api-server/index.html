@@ -551,31 +551,31 @@
               <tr>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>userId</code></p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock">login id - 식별자(not empty)</p></td>
               </tr>
               <tr>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock">고객 이름(not empty)</p></td>
               </tr>
               <tr>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>email</code></p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock">고객 email(email format)</p></td>
               </tr>
               <tr>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>password</code></p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock">고객 password(not empty)</p></td>
               </tr>
               <tr>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>address</code></p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-                <td class="tableblock halign-left valign-top"></td>
+                <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
                 <td class="tableblock halign-left valign-top"><p class="tableblock">고객 default 주소(not empty)</p></td>
               </tr>
               </tbody>
@@ -1882,7 +1882,7 @@ Content-Length: 80
             </div>
             <div class="listingblock">
               <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTime=2023-12-21T20:25:36.182227 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTime=2023-12-21T20:33:45.276258 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
               </div>
@@ -1896,7 +1896,7 @@ Host: localhost:8080</code></pre>
             </div>
             <div class="listingblock">
               <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTime=2023-12-21T20:25:36.182227' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTime=2023-12-21T20:33:45.276258' -i -X GET \
     -H 'Accept: application/json'</code></pre>
               </div>
             </div>
@@ -1926,8 +1926,8 @@ Content-Length: 438
       "imagePath" : "https://imag.com/path/img",
       "description" : "description",
       "memberId" : "memberId",
-      "createTime" : "2023-12-21T20:25:36.183599",
-      "updateTime" : "2023-12-21T20:25:36.18361"
+      "createTime" : "2023-12-21T20:33:45.277282",
+      "updateTime" : "2023-12-21T20:33:45.27729"
     } ]
   }
 }</code></pre>
@@ -2103,8 +2103,8 @@ Content-Length: 371
     "imagePath" : "https://imag.com/path/img",
     "description" : "description",
     "memberId" : "member_id",
-    "createTime" : "2023-12-21T20:25:36.056018",
-    "updateTime" : "2023-12-21T20:25:36.056032"
+    "createTime" : "2023-12-21T20:33:45.171275",
+    "updateTime" : "2023-12-21T20:33:45.171288"
   }
 }</code></pre>
               </div>
@@ -2372,7 +2372,7 @@ Content-Length: 101
             </div>
             <div class="listingblock">
               <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:25:36.148686 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:33:45.24097 HTTP/1.1
 Accept: application/json
 Host: localhost:8080
 Cookie: SESSION=cookie_val</code></pre>
@@ -2387,7 +2387,7 @@ Cookie: SESSION=cookie_val</code></pre>
             </div>
             <div class="listingblock">
               <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:25:36.148686' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:33:45.24097' -i -X GET \
     -H 'Accept: application/json' \
     --cookie 'SESSION=cookie_val'</code></pre>
               </div>
@@ -2418,8 +2418,8 @@ Content-Length: 441
       "imagePath" : "https://imag.com/path/img",
       "description" : "description",
       "memberId" : "member_id",
-      "createTime" : "2023-12-21T20:25:36.152051",
-      "updateTime" : "2023-12-21T20:25:36.152069"
+      "createTime" : "2023-12-21T20:33:45.244055",
+      "updateTime" : "2023-12-21T20:33:45.244069"
     } ]
   }
 }</code></pre>
@@ -2546,7 +2546,7 @@ Content-Length: 441
             </div>
             <div class="listingblock">
               <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:25:36.131271 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:33:45.219645 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
               </div>
@@ -2560,7 +2560,7 @@ Host: localhost:8080</code></pre>
             </div>
             <div class="listingblock">
               <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:25:36.131271' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-21T20:33:45.219645' -i -X GET \
     -H 'Accept: application/json'</code></pre>
               </div>
             </div>
@@ -2593,7 +2593,7 @@ Content-Length: 96
 <div id="footer">
   <div id="footer-text">
     Version 0.0.1-SNAPSHOT<br>
-    Last updated 2023-12-21 20:23:38 +0900
+    Last updated 2023-12-21 20:29:12 +0900
   </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
