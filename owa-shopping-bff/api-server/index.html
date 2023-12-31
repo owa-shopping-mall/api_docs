@@ -475,6 +475,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_주문_상세_정보_조회_성공_200">주문 상세 정보 조회 성공 - 200</a></li>
 </ul>
 </li>
+<li><a href="#_주문_page_조회getmapping">주문 page 조회(GetMapping)</a>
+<ul class="sectlevel2">
+<li><a href="#_주문_page_조회_성공_200">주문 page 조회 성공 - 200</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_3_product_server">3. Product Server</a>
@@ -1688,6 +1693,213 @@ Content-Length: 399
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_주문_page_조회getmapping"><a class="link" href="#_주문_page_조회getmapping">주문 page 조회(GetMapping)</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_주문_page_조회_성공_200"><a class="link" href="#_주문_page_조회_성공_200">주문 page 조회 성공 - 200</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>HEADER</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이름</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Accept</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">application/json</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>REQUEST</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/orders/paged?size=10&amp;lastCreateTimeTimestamp=1704000702467' -i -X GET \
+    -H 'Accept: application/json' \
+    --cookie 'SESSION=cookie_val'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">파라미터</th>
+<th class="tableblock halign-left valign-top">필수값</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">조회 개수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lastCreateTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마지막 조회 mill sec</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>RESPONSE</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 418
+
+{
+  "detailCode" : "",
+  "message" : "success",
+  "data" : {
+    "hasNext" : false,
+    "elements" : [ {
+      "orderId" : "orderId",
+      "createTime" : "2023-12-31T14:31:42.467998",
+      "createTimestamp" : 1704000702468,
+      "orderItems" : [ {
+        "productId" : "productId",
+        "name" : "product name",
+        "price" : 100,
+        "quantity" : 1,
+        "status" : "CREATED"
+      } ]
+    } ]
+  }
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">필수값</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>detailCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">response code - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">success message code - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">response body - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.hasNext</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">has next or not - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">data list - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].orderId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">order Id - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].createTime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">order 생성 시간 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].createTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">order 생성 시간 timestamp - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].orderItems</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">제품 제고 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].orderItems.[].productId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">productId - not empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].orderItems.[].name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">제품 이름 - not empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].orderItems.[].price</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">금액 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].orderItems.[].quantity</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">구메양 - not empty</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].orderItems.[].status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">주문 상태 정보 - not empty</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
 <h1 id="_3_product_server" class="sect0"><a class="link" href="#_3_product_server">3. Product Server</a></h1>
 <div class="sect1">
 <h2 id="_product_상품_등록"><a class="link" href="#_product_상품_등록">Product 상품 등록</a></h2>
@@ -1737,7 +1949,8 @@ Content-Length: 399
   "price" : 1000,
   "quantity" : 10,
   "imagePath" : "https://image_url.com/img/path",
-  "description" : "description"
+  "description" : "description",
+  "categoryNames" : [ "categoryName" ]
 }'</code></pre>
 </div>
 </div>
@@ -1746,7 +1959,7 @@ Content-Length: 399
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /command/api/v1/products HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 149
+Content-Length: 189
 Host: localhost:8080
 Cookie: SESSION=cookie_val
 
@@ -1755,7 +1968,8 @@ Cookie: SESSION=cookie_val
   "price" : 1000,
   "quantity" : 10,
   "imagePath" : "https://image_url.com/img/path",
-  "description" : "description"
+  "description" : "description",
+  "categoryNames" : [ "categoryName" ]
 }</code></pre>
 </div>
 </div>
@@ -1804,6 +2018,12 @@ Cookie: SESSION=cookie_val
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">상품 설명(not empty)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>categoryNames</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 이름 목록(not empty)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1919,7 +2139,8 @@ Content-Length: 101
   "price" : 1000,
   "quantity" : 0,
   "imagePath" : "https://image_url.com/img/path",
-  "description" : "description"
+  "description" : "description",
+  "categoryNames" : [ "categoryName" ]
 }'</code></pre>
 </div>
 </div>
@@ -1928,7 +2149,7 @@ Content-Length: 101
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /command/api/v1/products HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Content-Length: 148
+Content-Length: 188
 Host: localhost:8080
 Cookie: SESSION=cookie_val
 
@@ -1937,7 +2158,8 @@ Cookie: SESSION=cookie_val
   "price" : 1000,
   "quantity" : 0,
   "imagePath" : "https://image_url.com/img/path",
-  "description" : "description"
+  "description" : "description",
+  "categoryNames" : [ "categoryName" ]
 }</code></pre>
 </div>
 </div>
@@ -2702,35 +2924,39 @@ Content-Length: 80
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1703298758' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1704000702855' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1703298758 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1704000702855 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">파라미터</th>
+<th class="tableblock halign-left valign-top">필수값</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">조회 개수</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lastCreateTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">마지막 조회 mill sec</p></td>
 </tr>
 </tbody>
@@ -2746,7 +2972,7 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 439
+Content-Length: 565
 
 {
   "detailCode" : "",
@@ -2761,8 +2987,12 @@ Content-Length: 439
       "imagePath" : "https://imag.com/path/img",
       "description" : "description",
       "memberId" : "memberId",
-      "createTime" : "2023-12-23T11:32:38.702685",
-      "updateTime" : "2023-12-23T11:32:38.702697"
+      "productCategories" : [ {
+        "categoryId" : "categoryId1",
+        "categoryName" : "testCategoryName1"
+      } ],
+      "createTime" : "2023-12-31T14:31:42.856441",
+      "updateTime" : "2023-12-31T14:31:42.856453"
     } ]
   }
 }</code></pre>
@@ -2857,6 +3087,24 @@ Content-Length: 439
 <td class="tableblock halign-left valign-top"><p class="tableblock">제품 등록자 ID - not null</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].productCategories</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 목록</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].productCategories.[].categoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 식별 ID - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].productCategories.[].categoryName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 이름 - not null</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].createTime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
@@ -2938,7 +3186,7 @@ Cookie: SESSION=cookie_val</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 371
+Content-Length: 488
 
 {
   "detailCode" : "",
@@ -2951,8 +3199,12 @@ Content-Length: 371
     "imagePath" : "https://imag.com/path/img",
     "description" : "description",
     "memberId" : "member_id",
-    "createTime" : "2023-12-23T11:32:38.593948",
-    "updateTime" : "2023-12-23T11:32:38.593962"
+    "productCategories" : [ {
+      "categoryId" : "categoryId1",
+      "categoryName" : "testCategoryName1"
+    } ],
+    "createTime" : "2023-12-31T14:31:42.754806",
+    "updateTime" : "2023-12-31T14:31:42.75483"
   }
 }</code></pre>
 </div>
@@ -3032,6 +3284,24 @@ Content-Length: 371
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">제품 등록자 ID - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.productCategories</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 목록</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.productCategories.[].categoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 식별 ID - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.productCategories.[].categoryName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 이름 - not null</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createTime</code></p></td>
@@ -3168,14 +3438,14 @@ Content-Length: 101
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1703298758' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1704000702824' -i -X GET \
     -H 'Accept: application/json' \
     --cookie 'SESSION=cookie_val'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1703298758 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1704000702824 HTTP/1.1
 Accept: application/json
 Host: localhost:8080
 Cookie: SESSION=cookie_val</code></pre>
@@ -3183,22 +3453,26 @@ Cookie: SESSION=cookie_val</code></pre>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Parameter</th>
-<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">파라미터</th>
+<th class="tableblock halign-left valign-top">필수값</th>
+<th class="tableblock halign-left valign-top">설명</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">조회 개수</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>lastCreateTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">마지막 조회 mill sec</p></td>
 </tr>
 </tbody>
@@ -3214,7 +3488,7 @@ Cookie: SESSION=cookie_val</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 441
+Content-Length: 566
 
 {
   "detailCode" : "",
@@ -3229,8 +3503,12 @@ Content-Length: 441
       "imagePath" : "https://imag.com/path/img",
       "description" : "description",
       "memberId" : "member_id",
-      "createTime" : "2023-12-23T11:32:38.674477",
-      "updateTime" : "2023-12-23T11:32:38.674492"
+      "productCategories" : [ {
+        "categoryId" : "categoryId1",
+        "categoryName" : "testCategoryName1"
+      } ],
+      "createTime" : "2023-12-31T14:31:42.826769",
+      "updateTime" : "2023-12-31T14:31:42.82678"
     } ]
   }
 }</code></pre>
@@ -3325,6 +3603,24 @@ Content-Length: 441
 <td class="tableblock halign-left valign-top"><p class="tableblock">제품 등록자 ID - not null</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].productCategories</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 목록</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].productCategories.[].categoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 식별 ID - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].productCategories.[].categoryName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 이름 - not null</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].createTime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
@@ -3373,13 +3669,13 @@ Content-Length: 441
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-23T11:32:38.645896' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-31T14:31:42.807187' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-23T11:32:38.645896 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-31T14:31:42.807187 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
