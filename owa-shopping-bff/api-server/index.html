@@ -522,6 +522,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#_4_category">4. Category</a>
+<ul class="sectlevel1">
+<li><a href="#_category_정보">Category 정보</a>
+<ul class="sectlevel2">
+<li><a href="#_조회getmapping_성공">조회(GetMapping) 성공</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1728,7 +1737,7 @@ Content-Length: 399
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/orders/paged?size=10&amp;lastCreateTimeTimestamp=1704000702467' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/orders/paged?size=10&amp;lastCreateTimeTimestamp=1704525441574' -i -X GET \
     -H 'Accept: application/json' \
     --cookie 'SESSION=cookie_val'</code></pre>
 </div>
@@ -1779,8 +1788,8 @@ Content-Length: 418
     "hasNext" : false,
     "elements" : [ {
       "orderId" : "orderId",
-      "createTime" : "2023-12-31T14:31:42.467998",
-      "createTimestamp" : 1704000702468,
+      "createTime" : "2024-01-06T16:17:21.575254",
+      "createTimestamp" : 1704525441575,
       "orderItems" : [ {
         "productId" : "productId",
         "name" : "product name",
@@ -2924,13 +2933,13 @@ Content-Length: 80
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1704000702855' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1704525442216' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1704000702855 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products?size=2&amp;lastCreateTimeTimestamp=1704525442216 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -2972,7 +2981,7 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 565
+Content-Length: 654
 
 {
   "detailCode" : "",
@@ -2991,8 +3000,10 @@ Content-Length: 565
         "categoryId" : "categoryId1",
         "categoryName" : "testCategoryName1"
       } ],
-      "createTime" : "2023-12-31T14:31:42.856441",
-      "updateTime" : "2023-12-31T14:31:42.856453"
+      "createTime" : "2024-01-06T16:17:22.21747",
+      "createTimeTimestamp" : 1704525442217,
+      "updateTime" : "2024-01-06T16:17:22.217481",
+      "updateTimeTimestamp" : 1704525442217
     } ]
   }
 }</code></pre>
@@ -3111,10 +3122,22 @@ Content-Length: 565
 <td class="tableblock halign-left valign-top"><p class="tableblock">등록 일자 - not null</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].createTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">등록 일자 timestamp - not null</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].updateTime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">마지막 변경 일자 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].updateTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마지막 변경 일자 timestamp - not null</p></td>
 </tr>
 </tbody>
 </table>
@@ -3186,7 +3209,7 @@ Cookie: SESSION=cookie_val</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 488
+Content-Length: 575
 
 {
   "detailCode" : "",
@@ -3203,8 +3226,10 @@ Content-Length: 488
       "categoryId" : "categoryId1",
       "categoryName" : "testCategoryName1"
     } ],
-    "createTime" : "2023-12-31T14:31:42.754806",
-    "updateTime" : "2023-12-31T14:31:42.75483"
+    "createTime" : "2024-01-06T16:17:22.083432",
+    "createTimeTimestamp" : 1704525442083,
+    "updateTime" : "2024-01-06T16:17:22.083451",
+    "updateTimeTimestamp" : 1704525442083
   }
 }</code></pre>
 </div>
@@ -3310,10 +3335,22 @@ Content-Length: 488
 <td class="tableblock halign-left valign-top"><p class="tableblock">등록 일자 - not null</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">등록 일자 timestamp - not null</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.updateTime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">마지막 변경 일자 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.updateTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마지막 변경 일자 timestamp - not null</p></td>
 </tr>
 </tbody>
 </table>
@@ -3438,14 +3475,14 @@ Content-Length: 101
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1704000702824' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1704525442180' -i -X GET \
     -H 'Accept: application/json' \
     --cookie 'SESSION=cookie_val'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1704000702824 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTimeTimestamp=1704525442180 HTTP/1.1
 Accept: application/json
 Host: localhost:8080
 Cookie: SESSION=cookie_val</code></pre>
@@ -3488,7 +3525,7 @@ Cookie: SESSION=cookie_val</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 566
+Content-Length: 657
 
 {
   "detailCode" : "",
@@ -3507,8 +3544,10 @@ Content-Length: 566
         "categoryId" : "categoryId1",
         "categoryName" : "testCategoryName1"
       } ],
-      "createTime" : "2023-12-31T14:31:42.826769",
-      "updateTime" : "2023-12-31T14:31:42.82678"
+      "createTime" : "2024-01-06T16:17:22.184977",
+      "createTimeTimestamp" : 1704525442184,
+      "updateTime" : "2024-01-06T16:17:22.184988",
+      "updateTimeTimestamp" : 1704525442184
     } ]
   }
 }</code></pre>
@@ -3627,10 +3666,22 @@ Content-Length: 566
 <td class="tableblock halign-left valign-top"><p class="tableblock">등록 일자 - not null</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].createTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">등록 일자 timestamp - not null</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].updateTime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">마지막 변경 일자 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.elements.[].updateTimeTimestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">마지막 변경 일자 timestamp - not null</p></td>
 </tr>
 </tbody>
 </table>
@@ -3669,13 +3720,13 @@ Content-Length: 566
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-31T14:31:42.807187' -i -X GET \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/products/me?size=1&amp;lastCreateTime=2024-01-06T16:17:22.161483' -i -X GET \
     -H 'Accept: application/json'</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2023-12-31T14:31:42.807187 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/products/me?size=1&amp;lastCreateTime=2024-01-06T16:17:22.161483 HTTP/1.1
 Accept: application/json
 Host: localhost:8080</code></pre>
 </div>
@@ -3741,11 +3792,169 @@ Content-Length: 96
 </div>
 </div>
 </div>
+<h1 id="_4_category" class="sect0"><a class="link" href="#_4_category">4. Category</a></h1>
+<div class="sect1">
+<h2 id="_category_정보"><a class="link" href="#_category_정보">Category 정보</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_조회getmapping_성공"><a class="link" href="#_조회getmapping_성공">조회(GetMapping) 성공</a></h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>REQUEST</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'http://localhost:8080/query/api/v1/categories?level=2' -i -X GET \
+    -H 'Accept: application/json'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /query/api/v1/categories?level=2 HTTP/1.1
+Accept: application/json
+Host: localhost:8080</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">파라미터</th>
+<th class="tableblock halign-left valign-top">필수값</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>level</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">조회할 최대 level 계위</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>RESPONSE</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 331
+
+{
+  "detailCode" : "",
+  "message" : "success",
+  "data" : {
+    "categories" : [ {
+      "categoryId" : "categoryIdLevel1",
+      "name" : "categoryNameLevel1",
+      "childrenCategory" : [ {
+        "categoryId" : "categoryIdLevel2",
+        "name" : "categoryNameLevel2",
+        "childrenCategory" : [ ]
+      } ]
+    } ]
+  }
+}</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">필드명</th>
+<th class="tableblock halign-left valign-top">타입</th>
+<th class="tableblock halign-left valign-top">필수값</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>detailCode</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">response code - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">success message code - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">response body - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.categories</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">categories 목록 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.categories.[].categoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category Id - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.categories.[].name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 이름 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.categories.[].childrenCategory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">child categories 목록 - not null, child 가 없을 경우 emptyList</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.categories.[].childrenCategory.[].categoryId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category Id - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.categories.[].childrenCategory.[].name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">category 이름 - not null</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.categories.[].childrenCategory.[].childrenCategory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">child categories 목록 - not null, child 가 없을 경우 emptyList</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-12-23 10:57:10 +0900
+Last updated 2024-01-06 16:15:04 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
